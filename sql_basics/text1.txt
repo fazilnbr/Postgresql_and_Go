@@ -1,0 +1,4 @@
+fazil,nilambur,2,67
+sethu,idukki,1,89
+prashanth,palakkad,2,87
+ajal,trichur,1,98
