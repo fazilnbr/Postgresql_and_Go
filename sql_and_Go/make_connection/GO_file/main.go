@@ -33,7 +33,7 @@ func main() {
 	}
 	defer db.Close() //It work before exit this function
 
-	// checking the connections
+	// checking the connections using ping
 
 	err = db.Ping()
 	if err != nil {
@@ -41,6 +41,7 @@ func main() {
 	}
 
 	// CRED OPERATIONS
+	// alredy there is a table created
 
 	// inserting values to table
 
