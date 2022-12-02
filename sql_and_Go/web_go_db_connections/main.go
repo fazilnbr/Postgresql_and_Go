@@ -84,12 +84,13 @@ func main() {
 		db: db,
 	}
 
-	// handile functions
+	// handile functions for certain request
 	// call by struct methord
 
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", app.Home)
 	mux.HandleFunc("/insert", app.Insert)
+	mux.HandleFunc("/showdata", app.Display)
 
 	// establishing server
 
