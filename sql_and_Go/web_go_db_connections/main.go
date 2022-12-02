@@ -55,11 +55,17 @@ func conectdb() (*sql.DB, error) {
 
 }
 
-// connect db using funtion
+// create a struct of the database for the deppentency
 
-var db, err = conectdb()
+type application struct {
+	db *sql.DB
+}
 
 func main() {
+
+	// connect db using funtion
+
+	var db, err = conectdb()
 
 	// here checking if any error return from the connectdb() it callde globaly
 
@@ -72,11 +78,18 @@ func main() {
 
 	defer db.Close()
 
+	// creating struct object
+
+	app := &application{
+		db: db,
+	}
+
 	// handile functions
+	// call by struct methord
 
 	mux := http.NewServeMux()
-	mux.HandleFunc("/", Home)
-	mux.HandleFunc("/insert", Insert)
+	mux.HandleFunc("/", app.Home)
+	mux.HandleFunc("/insert", app.Insert)
 
 	// establishing server
 

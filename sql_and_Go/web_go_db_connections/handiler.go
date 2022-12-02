@@ -6,7 +6,9 @@ import (
 	"net/http"
 )
 
-func Home(w http.ResponseWriter, r *http.Request) {
+// all methords change in to struct methord
+
+func (app *application) Home(w http.ResponseWriter, r *http.Request) {
 	err := tpl.ExecuteTemplate(w, "signup.html", nil)
 	if err != nil {
 		fmt.Println("error while parsing file", err)
@@ -15,7 +17,7 @@ func Home(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func Insert(w http.ResponseWriter, r *http.Request) {
+func (app *application) Insert(w http.ResponseWriter, r *http.Request) {
 
 	// checking method is post or not if any error it redirect and returns
 
@@ -44,7 +46,9 @@ func Insert(w http.ResponseWriter, r *http.Request) {
 
 	in_qry := `INSERT INTO A1 (usr_name,usr_pwd) VALUES ($1,$2)`
 
-	_, err = db.Exec(in_qry, uname, upwd)
+	// db execute using app obj
+
+	_, err = app.db.Exec(in_qry, uname, upwd)
 	if err != nil {
 		log.Panicln(err.Error())
 		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
