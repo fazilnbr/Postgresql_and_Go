@@ -58,7 +58,7 @@ body {
               </li>
             </ul>
             <form class="d-flex" role="search">
-                    <a href="/" class="btn btn-outline-success" type="submit">login </a>
+                    <a href="/" class="btn btn-outline-success" type="submit">GO BACK</a>
                    
 
 
@@ -88,11 +88,13 @@ body {
             <tr>
                 <th>NAME</th>
                 <th>PASSWORD</th>
+                <th>DELETE</th>
             </tr>
             {{ range . }}
                 <tr scope="row">
                 <td>{{ .Name }}</td>
                 <td>{{ .Password }}</td>
+                <td><a href="/delete" class="btn btn-outline-success" type="submit"> DELETE </a></td>
                 </tr>
             {{ end }}
         </table>
